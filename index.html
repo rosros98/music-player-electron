@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>music player</title>
+    <link rel="stylesheet" href="style.css" />
+  </head> 
+
+  <body>
+    <div class="app">
+      <div id="title">MUSIC PLAYER 🎵</div>
+
+      <div class="song-title-container">
+        <div id="song-title">Enjoy the music! Select your song.</div>
+      </div>
+
+      <div class="song-image">
+        <img src="assets/first-cover.png" alt="songs image" id="song-image-img" style="width: 300px; height: 300px;">
+      </div>
+
+      <audio id="audio-player">
+        <source id="audio-source" src="songs/bts - i'm fine.mp3""> 
+        Your browser does not support the audio element.
+      </audio>
+      <div class="outer-container">
+        <div class="inner-container">
+          <!-- Custom controls -->
+          <div class="forward-back">
+            <button id="prev"></button>
+            <button id="play-pause"></button>
+            <button id="next"></button>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
