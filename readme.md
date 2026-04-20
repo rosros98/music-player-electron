@@ -25,7 +25,7 @@ It allows you to play local music files with a clean interface, custom controls,
 
 ## 📸 Preview
 
-![preview]<img width="300" height="500" alt="screenshot of example" src="screenshot.png" />
+<img width="300" height="500" alt="screenshot of example" src="https://github.com/user-attachments/assets/331eaa3e-78f3-409e-9369-26cf96ac6c35" />
 
 ## 🚀 How to Run the Project
 
