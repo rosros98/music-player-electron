@@ -4,8 +4,6 @@ A simple and modern desktop music player built with Electron, HTML, CSS, and Jav
 
 It allows you to play local music files with a clean interface, custom controls, and smooth user experience.
 
-⸻
-
 ## ✨ Features
 
 * ▶️ Play / Pause music
@@ -16,7 +14,6 @@ It allows you to play local music files with a clean interface, custom controls,
 * 🖥️ Desktop app built with Electron
 * 🎵 Local music library support
 
-⸻
 
 ## 🛠️ Tech Stack
 
@@ -25,12 +22,10 @@ It allows you to play local music files with a clean interface, custom controls,
 * HTML5 
 * CSS3 
 
-⸻
 
-📸 Preview
+## 📸 Preview
 
-<img width="400" height="500" alt="screenshot of example" src="/Screenshot 2026-04-20 alle 19.22.34.png" />
-⸻
+<img width="300" height="500" alt="screenshot of example" src="/Screenshot 2026-04-20 alle 19.22.34.png" />
 
 ## 🚀 How to Run the Project
 
