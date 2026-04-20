@@ -8,6 +8,10 @@
 
   <body>
     <div class="app">
+      <div id="window-controls">
+        <button id="close-btn">✕</button>
+      </div>
+      
       <div id="title">MUSIC PLAYER 🎵</div>
 
       <div class="song-title-container">
@@ -19,9 +23,15 @@
       </div>
 
       <audio id="audio-player">
-        <source id="audio-source" src="songs/bts - i'm fine.mp3""> 
+        <source id="audio-source" src=""> 
         Your browser does not support the audio element.
       </audio>
+      <div class="progress-container">
+        <div class="progress-bar-bg"></div>
+        <div class="progress-bar-fill" id="progressFill"></div>
+        <input type="range" id="progressBar" min="0" max="100" value="0"> 
+      </div>
+
       <div class="outer-container">
         <div class="inner-container">
           <!-- Custom controls -->

@@ -13,11 +13,10 @@ document.addEventListener("DOMContentLoaded", function() {
     let songTitle = document.getElementById("song-title");
     let songImage = document.getElementById("song-image-img");
     let playPauseButton = document.getElementById("play-pause");
-    let progressBar = document.getElementById("progress-bar");
-    let valueDisplay = document.getElementById("value-display");
+    let progressBar = document.getElementById("progressBar");
 
     //a function to update the player with the current song
-    function updatePlayer() {
+    function loadSong() {
         const currentSong = songs[currentSongIndex];
         songTitle.textContent = currentSong.title;
         audioSource.src = currentSong.file;
@@ -34,27 +33,76 @@ document.addEventListener("DOMContentLoaded", function() {
     playPauseButton.addEventListener("click", function() {
         if (audioPlayer.paused) {
             audioPlayer.play();
-            playPauseButton.style.backgroundImage = 'url("assets/pause.png")';
+            playPauseButton.style.backgroundImage = 'url("./assets/pause.png")';
         } else {
             audioPlayer.pause();
-            playPauseButton.style.backgroundImage = "url('assets/play.png')";
+            playPauseButton.style.backgroundImage = 'url("./assets/play.png")';
         }
     });
 
     //event listener for previous song button
     document.getElementById("prev").addEventListener("click", function() {
         currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
-        updatePlayer();
+        loadSong();
         audioPlayer.play();
-        //playPauseButton.style.backgroundImage = "url('assets/prev.png')";
+        playPauseButton.style.backgroundImage = 'url("./assets/pause.png")';
     });
 
     //event listener for next song button
     document.getElementById("next").addEventListener("click", function() {
         currentSongIndex = (currentSongIndex + 1) % songs.length;
-        updatePlayer();
+        loadSong();
         audioPlayer.play();
-        //playPauseButton.style.backgroundImage = "url('.../assets/next.png')";
+        playPauseButton.style.backgroundImage = 'url("./assets/pause.png")';
+    });
+
+    //event listener to control if the duration ! == NaN
+    audioPlayer.addEventListener("loadedmetadata", () => {
+        progressBar.value = 0;
+    });
+
+    //event listener to update progress bar as the song play
+/*     audioPlayer.addEventListener("timeupdate", function() {
+        if (!audioPlayer.duration) return;
+
+        const progress = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+        progressBar.value = progress;
+
+        valueDisplay.textContent = `${Math.floor(progress * 100)}%`;
+    }); */
+
+    audioPlayer.addEventListener("timeupdate", () => {
+        if (!audioPlayer.duration) return;
+
+        const progress = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+
+        document.getElementById("progressBar").value = progress;
+        document.getElementById("progressFill").style.width = progress + "%";
+    });
+
+    //event listener for progress bar input (seek)
+    progressBar.addEventListener("input", function() {
+        if (!audioPlayer.duration) return;
+
+        const value = progressBar.value;
+        const duration = audioPlayer.duration;
+
+        audioPlayer.currentTime = (value / 100) * duration;
+    });
+
+    // event listener to go on the next song when one ends 
+    audioPlayer.addEventListener("ended", function() {
+        currentSongIndex = (currentSongIndex + 1) % songs.length;
+
+        loadSong(currentSongIndex);
+
+        audioPlayer.play();
+        playPauseButton.style.backgroundImage = 'url("./assets/pause.png")';
+    });
+
+    //event listener to close the app
+    document.getElementById("close-btn").addEventListener("click", () => {
+        window.api.closeApp();
     });
 });
 
